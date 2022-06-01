@@ -1,6 +1,107 @@
-# Getting Started with Create React App
+# Microblog React-Redux Toolkit Project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## API
+Use json-server-auth module to enable a jwt based authentication flow
+[https://www.npmjs.com/package/json-server-auth](https://www.npmjs.com/package/json-server-auth)
+
+In terminal run...
+`json-server db.json -m ./node_modules/json-server-auth -r routes.json`
+
+### Users API
+Register new users and authenticate the existing users
+
+POST /register
+POST /login
+
+Example data structure for a saved user
+
+`[
+    {
+      "email": "robert.yarborough@email.com",
+      "password": "...$",
+      "name": "Robert",
+      "id": 1
+    {
+]`
+
+Both the login and registration APIs return a response containing a JWT access token that expires in one hour.
+
+
+`
+{
+    "accessToken": "xxx.xxx.xxx"
+}
+`
+
+### Posts API
+
+The posts API permits to create, delete, and get posts.
+
+POST  /posts
+DELETE /posts/1
+GET /posts
+
+Example: In order to read all the blog posts created by the users with the ids 1 and 2 we should make the following
+GET call.
+
+GET /posts?userId=1&userId=2
+
+### Followers API
+
+Add or Delete followers
+
+POST /followers
+DELETE /followers/1
+
+`
+[
+{
+  "userId": 2,
+  "followerId": 1,
+  "id": 1
+},
+{
+  "userId": 1,
+  "followerId": 2,
+  "id": 2
+}
+]
+`
+
+The userId stores the id of the followed user and followerId keeps track of the follower's id. Each row keeps
+a relation between these two users and can be deleted only using the relation id. 
+
+## Components
+
+Define all the components for UI Views.
+Install Material UI npm package
+
+Timeline Component
+
+The Timeline Component is a function that takes a list of blog posts and renders HTML markup.
+
+## Validation
+
+## Routing
+
+## Authentication
+
+## Authorization 
+
+## New Post
+
+## Timeline
+
+## Users 
+
+## Follow
+
+## Profile
+
+## Server Errors
+
 
 ## Available Scripts
 
